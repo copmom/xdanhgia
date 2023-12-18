@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kindle Ebook Storage</title>
+    <style>
+        /* Add some basic styling for better presentation */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+    <script>
+        function searchEbooks() {
+            var input, filter, ul, li, a, i, txtValue;
+            input = document.getElementById('searchInput');
+            filter = input.value.toUpperCase();
+            ul = document.getElementById('ebookList');
+            li = ul.getElementsByTagName('li');
+
+            for (i = 0; i < li.length; i++) {
+                a = li[i].getElementsByTagName('a')[0];
+                txtValue = a.textContent || a.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    li[i].style.display = '';
+                } else {
+                    li[i].style.display = 'none';
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Welcome to Your Kindle Ebook Storage</h1>
+
+    <p>This is a simple page for storing and accessing your ebooks on your Kindle using Dropbox.</p>
+
+    <label for="searchInput">Search:</label>
+    <input type="text" id="searchInput" onkeyup="searchEbooks()" placeholder="Type to search...">
+
+    <h2>Your Ebook Library</h2>
+    <ul id="ebookList">
+        <!-- Replace the placeholder links with your actual Dropbox share links -->
+        <li><a href="https://dl.dropboxusercontent.com/scl/fi/smi3yvr5vtb0z6ftcxirc/Tet-O-Lang-Dia-Nguc.epub?rlkey=7a0qp1tnm8fb3e5t1y2qh0z4w&dl=0">Tet O Lang Dia Nguc.epub</a></li>
+        <li><a href="https://www.dropbox.com/s/example-link2">Ebook 2</a></li>
+        <!-- Add more ebooks as needed -->
+    </ul>
+
+    <p>Simply click on the ebook title to download and read it.</p>
+
+    <p>Note: Ensure your ebooks are in a compatible format for Kindle, such as MOBI. Also, make sure your Dropbox links are shareable links.</p>
+</body>
+</html>
