@@ -21,11 +21,20 @@
             max-width: 100px;
             margin-right: 10px;
         }
+        .download-button {
+            margin-left: auto;
+            padding: 5px 10px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
 
-    <h1>eBook Store - Dochoithuvi</h1>
+    <h1>eBook Store</h1>
 
     <label for="search">Search:</label>
     <input type="text" id="search">
@@ -34,11 +43,11 @@
     <ul id="search-results"></ul>
 
     <script>
-        // Sample eBook data with title and cover image URL
+        // Sample eBook data with title, cover image URL, and download link
         const ebookData = [
-            { title: 'Bach Da Hanh', cover: 'https://dl.dropboxusercontent.com/scl/fi/ysv9igk7m216a3qfbc0bn/epub.vn-bach-da-hanh-1543907738.mobi?rlkey=su9t6hovvdoa00bjpkk7x6cjy&dl=0' },
-            { title: 'Eloquent JavaScript', cover: 'https://placekitten.com/100/151' },
-            { title: 'Clean Code: A Handbook of Agile Software Craftsmanship', cover: 'https://placekitten.com/100/152' },
+            { title: '13.67 - Chan Ho Kei', cover: 'https://www.dtv-ebook.com/images/files_2/2022/112022/13-67.jpg', downloadLink: 'https://docs.google.com/uc?id=1DM2foQ8t_tLgpAJsVSVvikNC55BCMWIq' },
+            { title: 'Eloquent JavaScript', cover: 'https://placekitten.com/100/151', downloadLink: 'https://example.com/eloquent-javascript.pdf' },
+            { title: 'Clean Code: A Handbook of Agile Software Craftsmanship', cover: 'https://placekitten.com/100/152', downloadLink: 'https://example.com/clean-code.pdf' },
             // Add more eBook data as needed
         ];
 
@@ -61,6 +70,16 @@
                 const title = document.createElement('span');
                 title.textContent = item.title;
                 li.appendChild(title);
+
+                const downloadButton = document.createElement('button');
+                downloadButton.textContent = 'Download';
+                downloadButton.className = 'download-button';
+                downloadButton.addEventListener('click', function () {
+                    // In a real-world scenario, you would handle the download action here.
+                    // For simplicity, we're just redirecting to the download link.
+                    window.location.href = item.downloadLink;
+                });
+                li.appendChild(downloadButton);
 
                 resultsContainer.appendChild(li);
             });
